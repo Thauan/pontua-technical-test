@@ -6,7 +6,7 @@ Este é um projeto desenvolvido em React utilizando a API da marvel para exibir 
 
 1. Clone o repositório em sua máquina local
 ```bash
-git clone git@github.com:Thauan/pontua-technical-test.git
+git clone https://github.com/Thauan/pontua-technical-test.git
 ```
 
 2. Entre na pasta do projeto:
