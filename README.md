@@ -1,30 +1,60 @@
-# React + TypeScript + Vite
+# Pontua - Teste Técnico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto desenvolvido em React utilizando a API da marvel para exibir uma lista de super heróis.
 
-Currently, two official plugins are available:
+## Instalação
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Clone o repositório em sua máquina local
+```bash
+git clone git@github.com:Thauan/pontua-technical-test.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Entre na pasta do projeto:
+```bash
+cd pontua-technical-test
+```
+
+3. Instale as dependências do PHP:
+```bash
+yarn
+```
+ou
+```bash
+npm install
+```
+
+4. Copie o arquivo .env.example para .env e configure as variáveis da marvel:
+```bash
+cp .env.example .env
+```
+
+5. Compile os assets e execute o projeto com:
+```bash
+yarn dev
+```
+ou
+```bash
+npm run dev
+```
+
+## Funcionalidades
+
+* Autenticação
+* Recuperação de conta
+* Seleção de agente - Super-héroi
+* Perfil do agente - Super-héroi
+* Logout
+* Sidebar com animações nos items.
+* Sidebar com funcionalidade de abrir/recolher.
+* Campo de busca
+
+## Tecnologias
+
+* React
+* Axios
+* Styled Components
+* React Icons
+* React Spinner
+
+## Contribuição
+Contribuições são bem-vindas! Se você encontrar algum bug ou tiver alguma ideia para melhorar o projeto, por favor, abra uma issue ou submeta um pull request.
