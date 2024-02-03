@@ -76,6 +76,7 @@ function SignIn() {
                         {...field}
                         isPassword={isPassword}
                         // error={errors.password}
+                        hasIcon={true}
                         placeholder='Informe sua senha'
                         buttonChildren={<img src='/icons/eye.svg' />}
                         onButtonClick={() => setIsPassword(!isPassword)}

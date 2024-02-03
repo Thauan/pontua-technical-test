@@ -1,13 +1,20 @@
 import styled from "styled-components";
 
-export const InputWrapper = styled.div`
+import { InputHTMLAttributes } from "react";
+
+
+type InputProps = {
+    hasIcon: boolean
+} & InputHTMLAttributes<HTMLInputElement>
+
+export const InputWrapper = styled.div<InputProps>`
     width: 100%;
     height: 57px;
     border-radius: 10px;
     border: 0.7px solid #B7B7B7;
 
     display: grid;
-    grid-template-columns: 1fr 57px;
+    grid-template-columns: ${(props) => props.hasIcon ? '1fr 57px' : '1fr'};
 
     transition: all 400ms;
 
