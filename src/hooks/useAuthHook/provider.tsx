@@ -1,8 +1,9 @@
-import { PropsWithChildren, useCallback, useMemo } from "react";
+import { PropsWithChildren, useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../useLocalStorageHook";
 import { AuthContext } from "./context";
 import { TSignIn } from "../../@types/dtos/TSignIn";
+import { delay } from "../../helpers/delay";
 
 const INITIAL_SESSION: TSignIn = {
   email: '',
@@ -12,11 +13,17 @@ const INITIAL_SESSION: TSignIn = {
 const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useLocalStorage("user", INITIAL_SESSION);
   const [agent, setAgent] = useLocalStorage("agent", null);
-  // const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const signIn = useCallback(async (data: TSignIn) => {
+    setLoading(true)
+    delay(1000)
+
     setUser(data);
+    setLoading(false)
+
     navigate("/choose/agent", { replace: true });
   }, []);
 
@@ -30,6 +37,14 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     navigate("/", { replace: true });
   }, []);
 
+  const checkLogged = () => {
+    if (user) return navigate("/choose/agent", { replace: true });
+  }
+
+  useEffect(() => {
+    checkLogged();
+  }, [user])
+
   const value = useMemo(() => {
     return {
       signedIn: !!user,
@@ -37,7 +52,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       agent,
       user,
       signIn,
-      signOut
+      signOut,
+      loading
     };
   }, [agent, user, signIn, signOut]);
 

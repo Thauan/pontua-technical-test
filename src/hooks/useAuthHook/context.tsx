@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-import { TAUthContext } from './types';
+import { TAuthContext } from './types';
 
-export const AuthContext = createContext({} as TAUthContext);
+export const AuthContext = createContext({} as TAuthContext);

@@ -8,7 +8,7 @@ import { TextInput } from '../../components/TextInput';
 import { useAuth } from '../../hooks/useAuthHook';
 import { Container, Content, Header, LeftContent, RightContent, Wrapper, } from './styles';
 import { useState } from 'react';
-import { TAUthContext } from '../../hooks/useAuthHook/types';
+import { TAuthContext } from '../../hooks/useAuthHook/types';
 import { TSignIn } from '../../@types/dtos/TSignIn';
 
 const schema = yup
@@ -32,7 +32,7 @@ function SignIn() {
   });
 
 
-  const { signIn }: TAUthContext = useAuth();
+  const { signIn }: TAuthContext = useAuth();
 
 
   const onSubmit = (user: TSignIn) => {
@@ -63,6 +63,7 @@ function SignIn() {
                     render={({ field }) => (
                       <TextInput
                         {...field}
+                        hasIcon={false}
                         // error={errors.email}
                         placeholder='E-mail'
                       />

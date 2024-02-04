@@ -1,4 +1,4 @@
-export type TAUthContext = {
+export type TAuthContext = {
   signedIn?: boolean;
   agent?: string;
   user?: string;

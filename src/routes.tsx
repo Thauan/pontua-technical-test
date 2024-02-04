@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { SignIn } from './pages/SignIn';
 import { RecoveryAccount } from './pages/RecoveryAccount';
+import { ChooseAgent } from './pages/ChooseAgent';
 
 const AppRoutes: React.FC = () => {
   const routes = [
@@ -15,6 +16,10 @@ const AppRoutes: React.FC = () => {
     {
       path: '/recovery/account',
       component: <RecoveryAccount />
+    },
+    {
+      path: 'choose/agent',
+      component: <ChooseAgent />
     }
   ];
 
