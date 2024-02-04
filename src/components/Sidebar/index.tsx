@@ -1,36 +1,32 @@
-import { useState } from "react";
 import { matchPath, useLocation } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FiUser, FiCornerUpLeft } from "react-icons/fi";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
-import { Container, Content, Sidebar, Nav, Box, Divider, List, ListItem } from "./styles";
+import { Container, Content, SidebarElement, Nav, Box, Divider, List, ListItem, LogoContainer } from "./styles";
+import { useSidebar } from "../../hooks/useSidebarHook";
+import { useAuth } from "../../hooks/useAuthHook";
 
-const SideBar = () => {
-  const [openedSidebar, setOpenedSidebar] = useState(false);
+const Sidebar = () => {
+  // const [openedSidebar, setOpenedSidebar] = useState(false);
+  const { openedSidebar, toggle } = useSidebar();
+  const { signOut } = useAuth();
   const location = useLocation();
 
-  const handleChangeSideBar = () => setOpenedSidebar(!openedSidebar);
+  const handleChangeSideBar = () => toggle();
 
   const checkCurrentRoute = (route: string) => {
-    if (matchPath(String(route), String(location.pathname)) !== null) {
-      console.log(true)
-      return true;
-    } else {
-      console.log(false)
-      return false;
-    }
-  }
-
-  const signOut = () => {
+    return (matchPath(String(route), String(location.pathname)) !== null) ? true : false
   }
 
   return (
     <Container>
       <Content>
-        <Sidebar opened={openedSidebar}>
+        <SidebarElement opened={openedSidebar}>
           <Nav>
             <Box>
-              <img className="logo" src="/logos/logo-app-mini.svg" alt="Logo do sistema Pontua" />
+              <LogoContainer>
+                <img className="logo" src={openedSidebar ? "/logos/logo-app.svg" : "/logos/logo-app-mini.svg"} alt="Logo do sistema Pontua" />
+              </LogoContainer>
 
               <button onClick={handleChangeSideBar}>
                 {!openedSidebar ? <AiOutlineDoubleRight /> : <AiOutlineDoubleLeft />}
@@ -40,24 +36,24 @@ const SideBar = () => {
             <Divider />
             <List>
               <ListItem active={checkCurrentRoute('/dashboard/home')} to="/dashboard/home" relative="route">
-                <LuLayoutDashboard />
+                <LuLayoutDashboard /> {openedSidebar ? 'Home' : ''}
               </ListItem>
               <ListItem active={checkCurrentRoute('/dashboard/profile')} to="/dashboard/profile" relative="route">
-                <FiUser />
+                <FiUser /> {openedSidebar ? 'Perfil' : ''}
               </ListItem>
             </List>
             <Divider />
 
             <List>
               <a onClick={() => signOut()} className="link">
-                <FiCornerUpLeft />
+                <FiCornerUpLeft /> {openedSidebar ? 'Sair' : ''}
               </a>
             </List>
           </Nav>
-        </Sidebar>
+        </SidebarElement>
       </Content>
     </Container>
   );
 }
 
-export { SideBar };
+export { Sidebar };

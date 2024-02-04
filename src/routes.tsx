@@ -6,6 +6,8 @@ import {
 import { SignIn } from './pages/SignIn';
 import { RecoveryAccount } from './pages/RecoveryAccount';
 import { ChooseAgent } from './pages/ChooseAgent';
+import ProtectedRoute from './pages/ProtectedLayout';
+import { Home } from './pages/Home';
 
 const AppRoutes: React.FC = () => {
   const routes = [
@@ -19,13 +21,25 @@ const AppRoutes: React.FC = () => {
     },
     {
       path: 'choose/agent',
-      component: <ChooseAgent />
+      component: <ChooseAgent />,
+      protected: true
+    },
+    {
+      path: '/dashboard/home',
+      component: <Home />,
+      protected: true
     }
   ];
 
   return (
     <Routes>
-      {routes.map((route, index) => <Route path={route.path} element={route.component} key={index} />)}
+      {routes.map((route, index) => (
+        <Route
+          path={route.path}
+          element={route.protected ? <ProtectedRoute>{route.component}</ProtectedRoute> : route.component}
+          key={index}
+        />
+      ))}
     </Routes>
   );
 }

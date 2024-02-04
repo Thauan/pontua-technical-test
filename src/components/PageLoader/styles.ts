@@ -34,12 +34,8 @@ export const Content = styled.div`
     .dot_loader {
         z-index: 400;
         position: relative;
-        right: 15px;
-        top: 1px;
-    }
-
-    img {
-        width: 10rem;
+        right: 21px;
+        top: 3px;
     }
 `
 

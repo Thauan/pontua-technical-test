@@ -24,7 +24,7 @@ export const Content = styled.div`
   box-shadow: 6px 0px 18px 0px rgba(0, 0, 0, 0.06);
 `;
 
-export const Sidebar = styled.header<any>`
+export const SidebarElement = styled.header<any>`
   ${({ opened, appearFromRight }) => css`
     height: 100%;
     position: fixed;
@@ -83,6 +83,8 @@ export const Sidebar = styled.header<any>`
           flex-direction: column;
 
           .link {
+            gap: 10px;
+
             &--active {
               animation: ${appearFromRight} 0.4s;
               color: #f21a05;
@@ -123,13 +125,6 @@ export const Sidebar = styled.header<any>`
           }
         }
       }
-
-      /* Icones que pode não ser tão principais no app */
-      div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
 
         ul {
           margin-bottom: 16px;
@@ -180,14 +175,13 @@ export const Sidebar = styled.header<any>`
               transition: background 0.3s;
             }
           }
-        }
   `}
 `;
 
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: 100%;
   box-shadow: 6px 0px 18px 0px rgba(0, 0, 0, 0.06);
@@ -215,11 +209,12 @@ export const Nav = styled.nav`
 `;
 
 export const Box = styled.div`
-  margin-top: 13px;
+  margin: 13px 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   flex-direction: row;
+  width: 100%;
   gap: 0px;
   padding: 3px;
 
@@ -229,19 +224,12 @@ export const Box = styled.div`
 
     animation: ${appearFromRight} 0.4s;
   }
+`;
 
-  span {
-    padding: 16px 0;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: var(--third-color);
-    width: 100%;
-  }
+export const LogoContainer = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Divider = styled.div`
@@ -268,7 +256,7 @@ export const ListItem = styled(Link)<any>`
 
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 10px;
 
     width: 100%;
     padding: 16px 0;
