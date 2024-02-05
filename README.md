@@ -3,7 +3,7 @@
 Este é um projeto desenvolvido em React utilizando a API da marvel para exibir uma lista de super heróis.
 
 ## Demonstração
-[CLIQUE AQUI PARA VISITAR A DEMO]([https://link-url-here.org](https://pontua-technical-test.vercel.app))
+[CLIQUE AQUI PARA VISITAR A DEMO](https://pontua-technical-test.vercel.app)
 
 ## Instalação
 
