@@ -4,7 +4,7 @@ Este é um projeto desenvolvido em React utilizando a API da marvel para exibir 
 ## Demonstração
 
 ```bash
-https://pontua-technical-test.vercel.app/choose/agent
+https://pontua-technical-test.vercel.app
 ```
 
 ## Instalação
