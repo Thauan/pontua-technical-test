@@ -27,6 +27,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const signOut = useCallback(async () => {
     setUser(null);
+    setAgent(null);
     navigate("/", { replace: true });
   }, []);
 

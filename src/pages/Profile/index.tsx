@@ -7,14 +7,15 @@ import DashboardLayout from '../DashboardLayout';
 import { Loading } from '../../components/Loading';
 import { Character } from '../../@types/models/character';
 import { useAuth } from '../../hooks/useAuthHook';
+import { ITab, Tabs } from '../../components/Tabs';
 
-const Profile: React.FC = () => {
-  const [profile, setProfile] = useState<Character | null>(null);
-  const { getCharacterById } = useCharacter();
+const Profile = () => {
   const { agent } = useAuth();
+  const { getCharacterById } = useCharacter();
+  const [profile, setProfile] = useState<Character | null>(null);
 
   useEffect(() => {
-    if (agent !== null) getById(JSON.parse(agent!).value);
+    if (agent !== null) getById(agent!.value);
   }, [agent]);
 
   const getById = async (id: number) => {
@@ -22,14 +23,38 @@ const Profile: React.FC = () => {
     setProfile(data.results[0])
   }
 
+  const tabs: ITab[] = [
+    {
+      id: 'overview',
+      title: 'Visão Geral',
+      component: (
+        <ProfileCharacterCard profile={profile} />
+      )
+    },
+    {
+      id: 'teams',
+      title: 'Teams',
+      component: (
+        <ul>
+          <li>Avengers</li>
+          <li>Defenders</li>
+          <li>Fantastic Four</li>
+          <li>Future Foundation</li>
+          <li>Heroes for Hire</li>
+          <li>The New Avengers</li>
+          <li>X-Mansion</li>
+        </ul>
+      )
+    }
+  ];
+
   return (
     <DashboardLayout>
       <Container>
+        <ProfileTitle title="Perfil" symbol="/" username={profile?.name} />
+
         {profile ? (
-          <>
-            <ProfileTitle title="Perfil" symbol="/" username={profile?.name} />
-            <ProfileCharacterCard profile={profile} />
-          </>
+          <Tabs tabs={tabs} />
         ) : (
           <Loading />
         )}

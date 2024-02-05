@@ -2,7 +2,7 @@ import { Character } from '../../@types/models/character';
 import { Card, Content, Avatar, Title, CardContent } from './styles';
 
 interface ProfileCharacterCardProps {
-  profile: Character;
+  profile: Character | null;
 }
 
 const ProfileCharacterCard = ({ profile }: ProfileCharacterCardProps) => {
