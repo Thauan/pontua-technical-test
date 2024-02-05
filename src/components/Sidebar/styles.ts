@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 
 interface SidebarProps {
-  opened: boolean;
-  appearFromRight: string;
+  opened?: boolean;
+  appearFromRight?: string;
 }
 
 interface LogoProps {
-  opened: boolean;
+  opened?: boolean;
 }
 
 interface ListItemProps {
-  active: boolean;
-  appearFromRight: string;
+  active?: boolean;
+  appearFromRight?: string;
 }
 
 const appearFromRight = keyframes`

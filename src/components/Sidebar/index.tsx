@@ -7,7 +7,6 @@ import { useSidebar } from "../../hooks/useSidebarHook";
 import { useAuth } from "../../hooks/useAuthHook";
 
 const Sidebar = () => {
-  // const [openedSidebar, setOpenedSidebar] = useState(false);
   const { openedSidebar, toggle } = useSidebar();
   const { signOut } = useAuth();
   const location = useLocation();

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface DashboardLayoutProps {
-  openedSidebar: boolean;
+  openedSidebar?: boolean;
 }
 
 export const Wrapper = styled.div<DashboardLayoutProps>`

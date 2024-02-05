@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from './styles';
 import { ProfileTitle } from '../../components/ProfileTitle';
 import { ProfileCharacterCard } from '../../components/ProfileCard';
