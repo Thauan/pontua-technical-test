@@ -1,17 +1,17 @@
+import * as yup from "yup"
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
 import { AuthCard } from '../../components/AuthCard';
 import { Button } from '../../components/Button';
 import { TextInput } from '../../components/TextInput';
 import { Container, Content, Header, LeftContent, RightContent, Wrapper } from './styles';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const schema = yup
   .object({
     email: yup.string()
-      .email("O e-mail deve ser valido")
+      .email("O e-mail deve ser válido")
       .required("O campo e-mail é obrigatorio")
   })
   .required()
@@ -29,9 +29,9 @@ function RecoveryAccount() {
     mode: 'onChange'
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = (data: any) => {
-    setSubmited(data);
+  const onSubmit = (data: { email: string }) => {
+    setSubmited(true);
+    console.log(`Enviado para ${data.email}`);
   }
 
   return (
@@ -55,7 +55,8 @@ function RecoveryAccount() {
                       render={({ field }) => (
                         <TextInput
                           {...field}
-                        //   error={errors.email}
+                          //   error={errors.email}
+                          hasIcon={false}
                           placeholder='Informe seu e-mail'
                         />
                       )}

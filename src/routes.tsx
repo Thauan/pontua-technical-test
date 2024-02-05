@@ -8,6 +8,7 @@ import { RecoveryAccount } from './pages/RecoveryAccount';
 import { ChooseAgent } from './pages/ChooseAgent';
 import ProtectedRoute from './pages/ProtectedLayout';
 import { Home } from './pages/Home';
+import { Profile } from './pages/Profile';
 
 const AppRoutes: React.FC = () => {
   const routes = [
@@ -27,6 +28,11 @@ const AppRoutes: React.FC = () => {
     {
       path: '/dashboard/home',
       component: <Home />,
+      protected: true
+    },
+    {
+      path: '/dashboard/profile',
+      component: <Profile /> ,
       protected: true
     }
   ];

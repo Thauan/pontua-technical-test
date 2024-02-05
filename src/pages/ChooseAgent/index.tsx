@@ -1,13 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { AuthCard } from "../../components/AuthCard";
-import { Select } from "../../components/Select";
+import { Select, TSelectOption } from "../../components/Select";
 import { Container, Content, Header, LeftContent, RightContent, Wrapper } from "./styles";
 import { useCharacter } from "../../hooks/useCharacterHook";
+import { Character } from "../../@types/models/character";
 
 function ChooseAgent() {
   const { getOptionsCharacters } = useCharacter();
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<TSelectOption[]>([]);
   const [currentPage] = useState<number>(1);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ function ChooseAgent() {
   }, [currentPage]);
 
   const getDataCharacters = async (page: number) => {
-    const response: any = await getOptionsCharacters(page);
+    const { data } = await getOptionsCharacters(page);
 
-    const data = response?.data?.results?.map((item: { id: number; name: string; thumbnail: { path: string; extension: string; }; }) => {
+    const result = data?.results?.map((item: Character) => {
       return {
         value: item.id,
         label: item.name,
@@ -25,7 +25,7 @@ function ChooseAgent() {
       }
     });
 
-    setOptions(data);
+    setOptions(result);
   }
 
   return (

@@ -1,21 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
-import ReactSelect from 'react-select';
+import ReactSelect, { PropsValue } from 'react-select';
 import { Container, Placeholder, Avatar, Option, Name } from './styles';
 import { FiUser } from "react-icons/fi";
 import { useAuth } from '../../hooks/useAuthHook';
 
-export interface OptionProps {
-  value: string;
+export type TSelectOption = {
+  value: number;
   label: string;
   image: string;
+};
+
+export interface IOptionProps {
+  options: TSelectOption[]
 }
 
-const Select = ({ options }: any) => {
+const Select = (props: IOptionProps) => {
   const { changeToAgent } = useAuth();
-  const [agent, setAgent] = useState<OptionProps>();
+  const [agent, setAgent] = useState<PropsValue<TSelectOption> | undefined>();
 
-  const onSelect = (event: OptionProps) => {
+  const onSelect = (event: PropsValue<TSelectOption> | undefined) => {
     setAgent(event);
     changeToAgent(event);
   }
@@ -24,15 +27,15 @@ const Select = ({ options }: any) => {
     <Container>
       <ReactSelect
         className="select"
-        onChange={(e: any) => onSelect(e)}
+        onChange={(event) => onSelect(event)}
         value={agent}
-        options={options}
+        options={props.options}
         placeholder={
           <Placeholder>
             <FiUser /> <div className='placeholder-message'>Selecione um agente</div>
           </Placeholder>
         }
-        formatOptionLabel={(option: OptionProps) => (
+        formatOptionLabel={(option: TSelectOption) => (
           <Option>
             <Avatar src={option.image} alt="country-image" />
             <Name>{option.label}</Name>

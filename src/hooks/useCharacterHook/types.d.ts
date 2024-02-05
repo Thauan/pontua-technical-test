@@ -1,6 +1,8 @@
+import { TPagination } from "../../@types/dtos/TPagination";
+import { Character } from "../../@types/models/character";
+
 export type TCharacterContext = {
-  getCharacterById?(id: number): Promise<void>;
-  getOptionsCharacters?(page: number): Promise<void>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getCharacters(page: number): Promise<{ data: any; pagination: { currentPage: number; total: number; }; }>;
+  getCharacterById?(id: number): Promise<{ data: { results: Character[] }; pagination: TPagination }>
+  getOptionsCharacters?(page: number): Promise<{ data: { results: Character[] }; pagination: TPagination }>
+  getCharacters(page: number): Promise<{ data: { results: Character[] }; pagination: TPagination }>;
 };

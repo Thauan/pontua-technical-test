@@ -1,6 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
+
+interface SidebarProps {
+  opened: boolean;
+  appearFromRight: string;
+}
+
+interface LogoProps {
+  opened: boolean;
+}
+
+interface ListItemProps {
+  active: boolean;
+  appearFromRight: string;
+}
 
 const appearFromRight = keyframes`
   from {
@@ -24,7 +37,7 @@ export const Content = styled.div`
   box-shadow: 6px 0px 18px 0px rgba(0, 0, 0, 0.06);
 `;
 
-export const SidebarElement = styled.header<any>`
+export const SidebarElement = styled.header<SidebarProps>`
   ${({ opened, appearFromRight }) => css`
     height: 100%;
     position: fixed;
@@ -226,10 +239,14 @@ export const Box = styled.div`
   }
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<LogoProps>`
   width: 90%;
   display: flex;
   justify-content: center;
+
+  img {
+    margin-left: ${(props) => props.opened ? '30px' : '0'};
+  }
 `;
 
 export const Divider = styled.div`
@@ -246,7 +263,7 @@ export const List = styled.ul`
   flex-direction: column;
 `;
 
-export const ListItem = styled(Link)<any>`
+export const ListItem = styled(Link)<ListItemProps>`
   ${({ active, appearFromRight }) => css`
     cursor: pointer;
 

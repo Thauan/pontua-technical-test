@@ -24,7 +24,7 @@ const Sidebar = () => {
         <SidebarElement opened={openedSidebar}>
           <Nav>
             <Box>
-              <LogoContainer>
+              <LogoContainer opened={openedSidebar}>
                 <img className="logo" src={openedSidebar ? "/logos/logo-app.svg" : "/logos/logo-app-mini.svg"} alt="Logo do sistema Pontua" />
               </LogoContainer>
 
